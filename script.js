@@ -40,10 +40,14 @@ function Read() {
     let lists = document.getElementsByClassName('list')
     console.log(lists)
     for (let list of lists){
+        let selected = null
         list.addEventListener("dragstart", function (e) {
-        let selected = e.target;
+            selected = e.target;
         
-
+        list.addEventListener("touchstart" , function (e) {
+             selected = e.target
+             console.log("touch trigger")
+        })
     
         RightBox.addEventListener("dragover" , function (e) {
             e.preventDefault();
