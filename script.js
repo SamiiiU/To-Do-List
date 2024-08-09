@@ -6,9 +6,8 @@ let RightBox = document.getElementById('right')
 
 
 let data = [
-    {id : 1 , task : "Workout "},
-    {id : 2 , task : "Sleep"},
-    {id : 3 , task : "Diet"}
+
+    
 ]
 
 let dataMid = [
@@ -43,6 +42,7 @@ function Read() {
     for (let list of lists){
         list.addEventListener("dragstart", function (e) {
         let selected = e.target;
+        
 
     
         RightBox.addEventListener("dragover" , function (e) {
@@ -110,11 +110,13 @@ function Read() {
     
     }
     trashSelect()
+    editselect()
 
 }
 
 
 let Addbtn = document.querySelector('#addBtn')
+let Savebtn = document.querySelector('#saveBtn')
 let AddInput = document.querySelector('.add')
 
 
@@ -149,8 +151,6 @@ function add (){
         id : data.length + dataMid.length + dataRight.length +  1,
         task : AddInput.value,
     }
-
-    console.log(AddInput)
     
     if(AddInput.value != ""){
         data.push(newItem);
@@ -159,6 +159,42 @@ function add (){
         setTimeout(() =>{
             console.log(data , newItem)
             Read()
-        } , 1000)
+        } , 200)
     }
+}
+
+let editId = "";
+Savebtn.style.display = 'none';
+
+function editselect(){
+    setTimeout(() => {
+        let edits = document.querySelectorAll('.edit')
+    
+        edits.forEach(edit => {
+            edit.addEventListener("click" , () => {
+                Savebtn.style.display = 'inline';
+                editId = +edit.getAttribute("id");
+                AddInput.value = data[editId-1].task
+
+                console.log(editId , "huu" , AddInput.value)
+            
+                Read()
+            })
+        })
+    } , 100)
+
+}
+
+function Save(){
+    let Edited = AddInput.value;
+
+    data[editId-1].task = Edited
+
+    console.log("Edited hai bhai",data)
+
+    AddInput.value = "";
+
+    Savebtn.style.display = 'none';
+    Read()
+
 }

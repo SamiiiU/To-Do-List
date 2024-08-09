@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+.mainCont{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80vh;
+    background-color: #2d3a3a86;
+
+    z-index: 2;
+}
+
 .Head_cont{
     margin-bottom: 1rem;
     display: flex;
@@ -14,7 +24,8 @@
 
 .head{
     font-weight: bolder;
-    background-color: #131313;
+    border-left : 1px dashed #fcfffc ;
+    border-right : 1px dashed #fcfffc ;
     text-align: center;
     font-size: 2rem;
 }
@@ -23,17 +34,24 @@
     display: inline;
     font-weight: bold;
     font-size: 3rem;
+    
 }
 
+.boxCont{
+    width: 33%;
+    padding: 0.5rem;
+}
 
 .box{
+    border-left : 1px dashed #fcfffc ;
+    border-right : 1px dashed #fcfffc ;
     min-height: 90%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: max-content;
     margin-top: 0.75rem;
-    background-color: #131313;
     color: #131313;
     font-size: 1rem;
     font-weight: 600;
@@ -48,6 +66,7 @@
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 1rem;
 }
 
 
@@ -64,7 +83,11 @@
     
 }
 
-.left .list{
+.mid .list i , .right .list i{
+    display: none;
+}
+
+.left .list {
     background-color: #b3dde2;
 }
 
@@ -83,6 +106,7 @@ input{
     outline: none;
     font-weight: 700;
     color: #fff;
+    border-radius: 1rem;
 }
 
 @media screen and (max-width : 1024px){
