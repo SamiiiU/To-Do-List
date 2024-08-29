@@ -28,7 +28,7 @@ function Read() {
         code += `<div class="list" draggable="true" id="${d.id}" data-task="${d.task}"><h1 >${d.task}</h1>
         <div class= "binEdit">
         <i class="fa-regular fa-trash-can text-red-400 trash cursor-pointer hover:text-red-600 "  id="${d.id}"></i>
-        <i class="fa-regular fa-pen-to-square edit" id="${d.id}"></i>
+        <i class="fa-regular fa-pen-to-square edit  cursor-pointer hidden " id="${d.id}"></i>
         </div>
         </div>`   
     ));
@@ -44,10 +44,14 @@ function Read() {
         list.addEventListener("dragstart", function (e) {
             selected = e.target;
         
-        list.addEventListener("touchstart" , function (e) {
-             selected = e.target
-             console.log("touch trigger")
-        })
+            list.addEventListener("touchstart", function (e) {
+                selected = e.target;
+            
+                // Add a visual indicator that the item is being dragged
+                selected.style.backgroundColor = "lightblue";
+            
+                console.log("Touch start triggered");
+            });
     
         RightBox.addEventListener("dragover" , function (e) {
             e.preventDefault();
